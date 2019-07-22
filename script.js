@@ -24,14 +24,14 @@ let colorInterval;
 let winner;
 
 // variables for each button
-const levelCount = document.querySelector(".level");
+const powerOn = document.querySelector("#powerButton")
 const gameOnOrOff = document.querySelector(".gameStatus")
 const startGame = document.querySelector("#start");
+const levelCount = document.querySelector(".level");
 const redButton = document.querySelector("#red");
+const greenButton = document.querySelector("#green");
 const blueButton = document.querySelector("#blue");
 const yellowButton = document.querySelector("#yellow");
-const greenButton = document.querySelector("#green");
-const powerOn = document.querySelector("#powerButton")
 // start button plays game when clicked
 
 powerOn.addEventListener('click', (event) => {
@@ -105,16 +105,16 @@ let turn = () =>{
 } 
 
 // functions for flashes of colors
-first = () =>{
+const first = () =>{
   redButton.style.backgroundColor = 'red';
 }
-second = () => {
+const second = () => {
   greenButton.style.backgroundColor = 'chartreuse';
 }
-third = () => {
+const third = () => {
   blueButton.style.backgroundColor = 'deepskyblue';
 }
-fourth = () => {
+const fourth = () => {
   yellowButton.style.backgroundColor = 'yellow';
 }
 
@@ -129,7 +129,6 @@ clearColors = () =>{
 redButton.addEventListener('click',(e) =>{
   if(powerOnGame){
     chosenSequence.push(1);
-    isCorrect();  
     first();
     if(!winner){
       setTimeout(()=>{
@@ -138,76 +137,37 @@ redButton.addEventListener('click',(e) =>{
     }
   }
 })
+greenButton.addEventListener('click', (e) => {
+  if (powerOnGame) {
+    chosenSequence.push(2);
+    second();
+    if (!winner) {
+      setTimeout(() => {
+        clearColors();
+      }, 300);
+    }
+  }
+})
+blueButton.addEventListener('click', (e) => {
+  if (powerOnGame) {
+    chosenSequence.push(3);
+    third();
+    if (!winner) {
+      setTimeout(() => {
+        clearColors();
+      }, 300);
+    }
+  }
+})
+yellowButton.addEventListener('click', (e) => {
+  if (powerOnGame) {
+    chosenSequence.push(3);
+    fourth();
+    if (!winner) {
+      setTimeout(() => {
+        clearColors();
+      }, 300);
+    }
+  }
+})
 
-// greenButton.addEventListener('click',(e) =>{
-//   chosenSequence.push(2);
-//   isCorrect();
-//   first();
-//   if (!winner) {
-//     setTimeout(() => {
-//       clearColor();
-//     }, 300);
-//   }
-//   console.log(chosenSequence)
-// })
-// blueButton.addEventListener('click', (e) => {
-//   chosenSequence.push(3);
-//   isCorrect();
-//   first();
-//   if (!winner) {
-//     setTimeout(() => {
-//       clearColor();
-//     }, 300);
-//   }
-//   console.log(chosenSequence)
-// })
-// yellowButton.addEventListener('click', (e) => {
-//   chosenSequence.push(4);
-//   isCorrect();
-//   first();
-//   if (!winner) {
-//     setTimeout(() => {
-//       clearColor();
-//     }, 300);
-//   }
-//   console.log(chosenSequence)
-// })
-
-// // check if chosen color is correct
-// isCorrect=() => {
-//   if(chosenSequence[chosenSequence.length - 1] !== colorSequence[colorSequence.length - 1] ){
-//     correct = false;
-//   }
-//   if(chosenSequence === 5 && correct){
-//     youWin();
-//   }
-//   if(correct === false){
-//     // colorsEverywhere();
-//     levelCount.innerHTML="nice!";
-//     setTimeout(() => {
-//       levelCount.innerHTML = level;
-//       clearColor();
-//     }, 1000);
-//   }
-
-//   if(level === colorSequence.length && correct && !winner){
-//     level++;
-//     colorSequence=[];
-//     showSequence=true;
-//     signal=0;
-//     levelCount.innerHTML=level;
-//     colorInterval = setInterval(turn, 1000);
-//   }
-// }
-
-
-// youWin = () =>{
-//   levelCount.innerHTML = 'Win';
-//   startGame.disabled = true;
-// }
-
-
-// function start(){
-
-//   appStart.init();
-// }
