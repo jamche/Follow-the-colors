@@ -1,5 +1,8 @@
 // test that script works console.log('hello world')
 
+app = {};
+
+
 // need empty array to have order of color sequence
 let colorSequence = [];
 // set array to have the selections of player
