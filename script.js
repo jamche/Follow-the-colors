@@ -23,6 +23,7 @@ let winner;
 const powerOn = document.querySelector("#powerButton")
 const gameOnOrOff = document.querySelector(".gameStatus")
 const startGame = document.querySelector("#start");
+const restartGame = document.querySelector("#restart")
 const levelCount = document.querySelector(".level");
 
 const redButton = document.querySelector("#red");
@@ -30,8 +31,25 @@ const blueButton = document.querySelector("#blue");
 const greenButton = document.querySelector("#green");
 const yellowButton = document.querySelector("#yellow");
 // start button plays game when clicked
+startAndReset = () => {
+  winner = false;
+  colorSequence = [];
+  chosenSequence = [];
+  signal = 0;
+  colorInterval = 0;
+  level = 1;
+  levelCount.innerHTML = `Level ${level}`;
+  correctPick = true;
+  for (let i = 0; i < 10; i++) {
+    // 4 colors, so multiply by 4 and add 1 to get whole number between 1 - 5, math.floor rounds down the decimal, so number will be between 1 - 4(color options)
+    colorSequence.push(Math.floor(Math.random() * 4) + 1);
+  }
+  showSequence = true;
+  console.log(colorSequence);
+  colorInterval = setInterval(turn, 800);
+}
 
-powerOn.addEventListener('click', (event) => {
+powerOn.addEventListener('click', (e) => {
   if(powerOn.checked === true){
     powerOnGame = true;
     gameOnOrOff.innerHTML = "Game is On"
@@ -50,24 +68,13 @@ startGame.addEventListener('click', (e) =>{
   }
 });
 // play game function
-const playGame =() => {
-  winner = false;
-  colorSequence = [];
-  chosenSequence = [];
-  signal = 0;
-  colorInterval = 0;
-  level = 1;
-  levelCount.innerHTML = 1;
-  correctPick = true;
-  for(let i = 0; i < 10; i++){
-    // 4 colors, so multiply by 4 and add 1 to get whole number between 1 - 5, math.floor rounds down the decimal, so number will be between 1 - 4(color options)
-    colorSequence.push(Math.floor(Math.random() * 4) + 1);
-  }
-  showSequence = true;
-  console.log(colorSequence);
-  colorInterval = setInterval(turn, 800);
+const playGame = () => {
+  startAndReset();
 }
-
+// restarts game
+restartGame.addEventListener('click', (e) => {
+  startAndReset();
+});
 const turn = () => {
   // user can't touch anything before colorSequence is done
   powerOnGame = false;
@@ -118,10 +125,10 @@ const clearColors = () => {
   yellowButton.style.backgroundColor = 'goldenrod';
 }
 const signalFlash = () =>{
-  redButton.style.backgroundColor = 'red';
-  blueButton.style.backgroundColor = 'deepskyblue';
-  greenButton.style.backgroundColor = 'chartreuse'
-  yellowButton.style.backgroundColor = 'yellow';
+  first();
+  second();
+  third();
+  fourth();
 }
 
 redButton.addEventListener('click',(e) =>{
@@ -132,7 +139,7 @@ redButton.addEventListener('click',(e) =>{
     if(!winner){
       setTimeout(()=>{
         clearColors();
-      }, 500);
+      }, 200);
     }
   }
 })
@@ -144,7 +151,7 @@ blueButton.addEventListener('click', (e) => {
     if (!winner) {
       setTimeout(() => {
         clearColors();
-      }, 500);
+      }, 200);
     }
   }
 })
@@ -156,7 +163,7 @@ greenButton.addEventListener('click', (e) => {
     if (!winner) {
       setTimeout(() => {
         clearColors();
-      }, 500);
+      }, 200);
     }
   }
 })
@@ -168,7 +175,7 @@ yellowButton.addEventListener('click', (e) => {
     if (!winner) {
       setTimeout(() => {
         clearColors();
-      }, 500);
+      }, 200);
     }
   }
 })
@@ -185,8 +192,9 @@ const isCorrect = () => {
   if(correctPick === false){
     signalFlash();
     levelCount.innerHTML = "Wrong choice";
+    powerOnGame = false;
     setTimeout(()=>{
-      levelCount.innerHTML = level;
+      levelCount.innerHTML = `Level ${level}, Restart the game`;
       clearColors();
     }, 800)
     // 
@@ -196,7 +204,7 @@ const isCorrect = () => {
     chosenSequence = [];
     showSequence = true;
     signal = 0;
-    levelCount.innerHTML = level;
+    levelCount.innerHTML = `Level ${level}`;
     colorInterval = setInterval(turn, 800);
   }
 
