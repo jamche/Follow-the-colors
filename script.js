@@ -1,6 +1,6 @@
 // test that script works console.log('hello world')
 
-app = {};
+const app = {};
 
 
 // need empty array to have order of color sequence
