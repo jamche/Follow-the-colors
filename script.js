@@ -27,9 +27,9 @@ app.init = () => {
   app.powerOn = document.querySelector("#powerButton")
   app.gameOnOrOff = document.querySelector(".gameStatus")
   app.startGame = document.querySelector("#start");
-  // app.restartGame = document.querySelector("#restart")
   app.levelCount = document.querySelector(".level");
-
+  app.feedback = document.querySelector(".feedback");
+  // different colors
   app.redButton = document.querySelector("#red");
   app.blueButton = document.querySelector("#blue");
   app.greenButton = document.querySelector("#green");
@@ -39,11 +39,11 @@ app.init = () => {
   app.powerOn.addEventListener('click', (e) => {
     if (app.powerOn.checked === true) {
       app.powerOnGame = true;
-      app.gameOnOrOff.innerHTML = "Game is On"
+      app.gameOnOrOff.innerHTML = "Game is On, start the game!"
     } else {
       app.powerOnGame = false;
-      app.gameOnOrOff.innerHTML = "Game is off"
-      app.clearColors();
+      app.gameOnOrOff.innerHTML = "Game is Off"
+      app.clearGame();
       clearInterval(app.colorInterval);
     }
   }); 
@@ -67,7 +67,7 @@ app.init = () => {
   }
 
   app.startGame.addEventListener('click', (e) =>{
-    if(app.powerOnGame || app.winner){
+    if(app.powerOnGame === true || app.winner === false){
       app.start();
     }
   });
@@ -75,20 +75,20 @@ app.init = () => {
 
 
   app.turn = () => {
-    // user can't touch anything before colorSequence is done
+    // user can't interact with anything before colorSequence is done
     app.powerOnGame = false;
 
     if(app.signal === app.level){
       clearInterval(app.colorInterval);
       app.showSequence = false;
       //set colros to default color
-      app.clearColors();
+      app.clearGame();
       // user can click colors since sequence is done
       app.powerOnGame = true; 
     }
 
     if(app.showSequence){
-      app.clearColors();
+      app.clearGame();
       // flashes the color depending on the number in the array
       setTimeout(() => {
         // if first item in array is one run function first....
@@ -117,7 +117,7 @@ app.init = () => {
 
   // function to clear colors when flashed
   // set them back to default color
-  app.clearColors = () => {
+  app.clearGame = () => {
     app.redButton.style.backgroundColor = 'firebrick';
     app.blueButton.style.backgroundColor = 'darkblue';
     app.greenButton.style.backgroundColor = 'green';
@@ -164,7 +164,7 @@ app.init = () => {
     app.isCorrect();
     if (!app.winner) {
       setTimeout(() => {
-        app.clearColors();
+        app.clearGame();
       }, 200);
     }
   }
@@ -181,15 +181,19 @@ app.init = () => {
     }
     if(app.correctPick === false){
       app.signalFlash();
-      app.levelCount.innerHTML = "Wrong choice";
+      app.feedback.innerHTML = "Wrong choice";
       app.powerOnGame = false;
       setTimeout(()=>{
-        app.levelCount.innerHTML = `Level ${app.level}, Restart the game`;
-        app.clearColors();
-      }, 800)
-      // 
+        app.levelCount.innerHTML = `Nice try, you made it to Level ${app.level}. Restart to try again`;
+        app.clearGame();
+      }, 1000)
     }
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
+      app.feedback.innerHTML = `Nice pick!`;
+      setInterval(() => {
+        app.feedback.innerHTML = ``;
+      }, 2000); 
+
       app.level++;
       app.chosenSequence = [];
       app.showSequence = true;
@@ -201,13 +205,12 @@ app.init = () => {
   }
 
   app.youWin = () => {
-    alert('You Win!')
     app.levelCount.innerHTML = "You won, nice!";
     app.powerOnGame = false;
     app.winner = true;
   }
 }
 
-// start
+// start the app
   app.init();  
 

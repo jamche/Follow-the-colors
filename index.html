@@ -4,35 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/style.css">
-  <title>Bop It Colors</title>
+  <title>Follow the Colors!</title>
 </head>
 <body>
 <!-- make buttons -->
 <header>
+
+  <div class="wrapper">  
+    <h1>Follow the Colors!</h1>
+    <div>
+      <h3>Instructions</h3>
+      <p>Turn on the game by clicking the "Power On" button and start button</p>
+      <p>Wait for the color sequence to show, then click the correct colors in the order shown</p>
+      <p>Think you can make it to the end?</p>
+    </div>
+  </div>
+</header>
+<main class="wrapper">
+
+  <div class="powerArea">
     <div>
       <label for="powerButton">Power On</label>
-      <input type="checkbox" id="powerButton" autocomplete="off">
+      <input tabindex = 1 type="checkbox" id="powerButton" autocomplete="off">
     </div>
-</header>
-<main>
+    <div class="startButton">
+      <button tabindex = 1 id="start">Start</button>
+    </div>
+    <div class="gameStatus">
+    </div>
+  </div>
 
-  <div class="buttonContainer wrapper">
-    <div class="topButtons">
-      <div class="button" id="red"></div>
-      <div class="button" id="blue"></div>
-      <div class="button" id="green"></div>
-      <div class="button" id="yellow"></div>
-    </div>
-    <div class="menu">
+  <div class="buttonContainer">
+    <div class="Buttons">
       <div>
-        <button id="start">Start</button>
-        <!-- <button id="restart">Restart</button> -->
+        <button class="button" id="red"></button>
+        <button class="button" id="blue"></button>
       </div>
-      <div class="level"></div>
-      <div class="gameStatus"></div>
+      <div>
+        <button class="button" id="green"></button>
+        <button class="button" id="yellow"></button>
+      </div>
     </div>
+  </div>  
 
+  <div class="menu">
+    <div class="level">
+        <!-- level info is appended here -->
+    </div>
+    <div class="feedback">
+        <!-- Whether answer is correct or not -->
+    </div>
   </div>
 </main>
 

@@ -184,35 +184,38 @@ h1, h2, h3, h4, h5, h6, p, ul, li, a {
   padding: 0;
 }
 
+main {
+  margin-top: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Nunito', sans-serif;
+}
+
 .wrapper {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 10%;
 }
 
-main {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.powerArea,
+.menu {
+  width: 25%;
 }
 
 .buttonContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 50%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  width: 50%;
+}
+
+header {
+  text-align: center;
+  width: 100%;
+  font-family: 'Nunito', sans-serif;
 }
 
 .menu {
@@ -230,8 +233,6 @@ main {
 
 .menu .start {
   background: seashell;
-  width: 100px;
-  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -244,9 +245,6 @@ main {
 
 .menu .start button {
   background: seashell;
-  border: none;
-  height: 100%;
-  width: 100%;
 }
 
 .menu .levelSpot {
@@ -260,9 +258,47 @@ main {
           justify-content: center;
 }
 
+.powerArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.powerArea .startButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0;
+}
+
+.buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 5%;
+}
+
 .button {
   width: 100px;
   height: 100px;
+  margin: 10% 0;
+  border: none;
   border-radius: 50%;
   cursor: pointer;
 }

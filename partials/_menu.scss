@@ -1,0 +1,21 @@
+.menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .start{
+    background: seashell;
+    display: flex;
+    align-items: center;
+    color: seashell;
+    border-radius: 50%;
+    button{
+      background: seashell;
+    }
+  }
+  .levelSpot{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+}

@@ -1,8 +1,24 @@
+
 h1,h2,h3,h4,h5,h6,p,ul,li,a{
   margin: 0;
   padding: 0;
 }
+main{
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+}
 .wrapper{
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 10%;
+}
+
+.powerArea, 
+.menu{
+  width: 25%;
+}
+.buttonContainer{
+  width: 50%;
 }
