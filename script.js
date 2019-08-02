@@ -40,7 +40,7 @@ app.init = () => {
     if (app.powerOn.checked === true) {
       console.log('game is on')
       app.powerOnGame = true;
-      app.gameOnOrOff.innerHTML = `<h3>Game is On. </br> Start the game!</h3>`
+      app.gameOnOrOff.innerHTML = `<h3>Game is On</h3>`
     } else if(app.powerOn.checked === false) {
       console.log('game is off')
       app.powerOnGame = false;
@@ -193,11 +193,14 @@ app.init = () => {
       app.signalFlash();
       app.powerOnGame = false;
       app.feedback.innerHTML = `<h3>Wrong choice</h3>`;
+      setInterval(() => {
+        app.feedback.innerHTML = ``;        
+      }, 2000);
 
       setTimeout(()=>{
         app.levelCount.innerHTML = `<h3>Nice try, you made it to Level ${app.level}. Restart to try again</h3>`;
         app.clearGame();
-      }, 1000)
+      }, 2000)
     }
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
       app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
