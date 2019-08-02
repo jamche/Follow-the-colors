@@ -38,11 +38,13 @@ app.init = () => {
 
   app.powerOn.addEventListener('click', (e) => {
     if (app.powerOn.checked === true) {
+      console.log('game is on')
       app.powerOnGame = true;
-      app.gameOnOrOff.innerHTML = "Game is On, start the game!"
-    } else {
+      app.gameOnOrOff.innerHTML = `<h3>Game is On. </br> Start the game!</h3>`
+    } else if(app.powerOn.checked === false) {
+      console.log('game is off')
       app.powerOnGame = false;
-      app.gameOnOrOff.innerHTML = "Game is Off"
+      app.gameOnOrOff.innerHTML = `<h3>Game is Off, turn the game on</h3>`
       app.clearGame();
       clearInterval(app.colorInterval);
     }
@@ -55,8 +57,9 @@ app.init = () => {
     app.signal = 0;
     app.colorInterval = 0;
     app.level = 1;
-    app.levelCount.innerHTML = `Level ${app.level}`;
+    app.levelCount.innerHTML = `<h3>You are on : Level ${app.level}</h3>`;
     app.correctPick = true;
+    // levels of the game
     for (let i = 0; i < 10; i++) {
       // 4 colors, so multiply by 4 and add 1 to get whole number between 1 - 5, math.floor rounds down the decimal, so number will be between 1 - 4(color options)
       app.colorSequence.push(Math.floor(Math.random() * 4) + 1);
@@ -67,9 +70,16 @@ app.init = () => {
   }
 
   app.startGame.addEventListener('click', (e) =>{
-    if(app.powerOnGame === true || app.winner === false){
+
+    if (app.powerOn.checked === false) {
+      app.powerOnGame = false;
+      console.log('game is off turn it on')
+    }
+    else if(app.powerOnGame === true || app.winner === false){
+      console.log('game is on')
       app.start();
     }
+  
   });
 
 
@@ -176,20 +186,21 @@ app.init = () => {
       app.correctPick = false;
     }
     // at game end
-    if (app.chosenSequence.length === 5 && app.correctPick) {
+    if (app.chosenSequence.length === 10 && app.correctPick) {
       app.youWin();
     }
     if(app.correctPick === false){
       app.signalFlash();
-      app.feedback.innerHTML = "Wrong choice";
       app.powerOnGame = false;
+      app.feedback.innerHTML = `<h3>Wrong choice</h3>`;
+
       setTimeout(()=>{
-        app.levelCount.innerHTML = `Nice try, you made it to Level ${app.level}. Restart to try again`;
+        app.levelCount.innerHTML = `<h3>Nice try, you made it to Level ${app.level}. Restart to try again</h3>`;
         app.clearGame();
       }, 1000)
     }
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
-      app.feedback.innerHTML = `Nice pick!`;
+      app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
       setInterval(() => {
         app.feedback.innerHTML = ``;
       }, 2000); 
@@ -198,14 +209,14 @@ app.init = () => {
       app.chosenSequence = [];
       app.showSequence = true;
       app.signal = 0;
-      app.levelCount.innerHTML = `Level ${app.level}`;
+      app.levelCount.innerHTML = `<h3>Level ${app.level}</h3>`;
       app.colorInterval = setInterval(app.turn, 400);
     }
 
   }
 
   app.youWin = () => {
-    app.levelCount.innerHTML = "You won, nice!";
+    app.levelCount.innerHTML = `<h3>You won, amazing!</h3>`;
     app.powerOnGame = false;
     app.winner = true;
   }

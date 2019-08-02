@@ -1,4 +1,11 @@
-
+body{
+  background-image: linear-gradient(to right bottom, #dbdac8, #a0cbab, #28bbba, #00a3e0, #127aeb);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  font-size: 16px;
+}
 h1,h2,h3,h4,h5,h6,p,ul,li,a{
   margin: 0;
   padding: 0;
@@ -16,7 +23,7 @@ main{
 }
 
 .powerArea, 
-.menu{
+.gameInfo{
   width: 25%;
 }
 .buttonContainer{

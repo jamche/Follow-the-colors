@@ -15,29 +15,30 @@
   <div class="wrapper">  
     <h1>Follow the Colors!</h1>
     <div>
-      <h3>Instructions</h3>
-      <p>Turn on the game by clicking the "Power On" button and start button</p>
-      <p>Wait for the color sequence to show, then click the correct colors in the order shown</p>
-      <p>Think you can make it to the end?</p>
+      <h2>Instructions</h3>
+      <p> 1 - Turn on the game by clicking the "Power On" button and start button</p>
+      <p> 2 - Wait for the color sequence to show.</p>
+      <p> 3 - Click the correct colors in the order shown</p>
     </div>
   </div>
 </header>
 <main class="wrapper">
 
   <div class="powerArea">
-    <div>
-      <label for="powerButton">Power On</label>
+    <div class="powerInputArea">
+      <label for="powerButton"><h3>Power</h3></label>
       <input tabindex = 1 type="checkbox" id="powerButton" autocomplete="off">
     </div>
     <div class="startButton">
-      <button tabindex = 1 id="start">Start</button>
+      <button tabindex = 1 id="start"><h3>Start</h3></button>
     </div>
     <div class="gameStatus">
+      <h3>Game is Off turn the game on</h3>
     </div>
   </div>
-
+<!-- colored buttons -->
   <div class="buttonContainer">
-    <div class="Buttons">
+    <div class="buttons">
       <div>
         <button class="button" id="red"></button>
         <button class="button" id="blue"></button>
@@ -49,7 +50,7 @@
     </div>
   </div>  
 
-  <div class="menu">
+  <div class="gameInfo">
     <div class="level">
         <!-- level info is appended here -->
     </div>
@@ -58,7 +59,9 @@
     </div>
   </div>
 </main>
-
+<footer>
+  Created By : Jamie Yeung 2019
+</footer>
   <script src="script.js"></script>
 </body>
 </html>
