@@ -79,7 +79,6 @@ app.init = () => {
       console.log('game is on')
       app.start();
     }
-  
   });
 
 
@@ -91,7 +90,7 @@ app.init = () => {
     if(app.signal === app.level){
       clearInterval(app.colorInterval);
       app.showSequence = false;
-      //set colros to default color
+      //set colorss to default color
       app.clearGame();
       // user can click colors since sequence is done
       app.powerOnGame = true; 
@@ -175,7 +174,7 @@ app.init = () => {
     if (!app.winner) {
       setTimeout(() => {
         app.clearGame();
-      }, 200);
+      }, 400);
     }
   }
 
