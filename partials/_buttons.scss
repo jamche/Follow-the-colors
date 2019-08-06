@@ -26,6 +26,10 @@
         -webkit-box-shadow: 0px 9px 0px #778899;
         -moz-box-shadow: 0px 9px 0px #778899;
         box-shadow: 0px 9px 0px #778899;
+        @include media(890px){
+          width: 100px;
+          height: 100px;
+        }
         @include media(420px){
           width: 100px;
           height: 100px;

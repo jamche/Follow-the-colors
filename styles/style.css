@@ -403,6 +403,13 @@ header p {
   box-shadow: 0px 9px 0px #778899;
 }
 
+@media (max-width: 890px) {
+  .buttonContainer .buttons div .button {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 @media (max-width: 420px) {
   .buttonContainer .buttons div .button {
     width: 100px;

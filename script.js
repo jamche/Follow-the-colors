@@ -142,14 +142,22 @@ app.init = () => {
     if(app.powerOnGame){
       app.chosenSequence.push(1);
       app.first();
-      app.colorsToDefault();
+      if(!app.winner){
+        setTimeout(() => {
+          app.colorsToDefault();    
+        }, 200);
+      }
     }
   })
   app.blueButton.addEventListener('click', (e) => {
     if (app.powerOnGame) {
       app.chosenSequence.push(2);
       app.second();
-      app.colorsToDefault();
+      if (!app.winner) {
+        setTimeout(() => {
+          app.colorsToDefault();
+        }, 200);
+      }
     }
   })
   app.greenButton.addEventListener('click', (e) => {
@@ -157,14 +165,22 @@ app.init = () => {
       app.chosenSequence.push(3);
       app.third();
       app.isCorrect();
-      app.colorsToDefault();
+      if (!app.winner) {
+        setTimeout(() => {
+          app.colorsToDefault();
+        }, 200);
+      }
     }
   })
   app.yellowButton.addEventListener('click', (e) => {
     if (app.powerOnGame) {
       app.chosenSequence.push(4);
       app.fourth();
-      app.colorsToDefault();
+      if (!app.winner) {
+        setTimeout(() => {
+          app.colorsToDefault();
+        }, 200);
+      }
     }
   })
 
@@ -205,14 +221,15 @@ app.init = () => {
       app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
       setInterval(() => {
         app.feedback.innerHTML = ``;
-      }, 2000); 
+      }, 5000); 
 
       app.level++;
       app.chosenSequence = [];
       app.showSequence = true;
       app.signal = 0;
       app.levelCount.innerHTML = `<h3>Level ${app.level}</h3>`;
-      app.colorInterval = setInterval(app.turn, 400);
+      // speed that the color sequence is shown
+      app.colorInterval = setInterval(app.turn, 800);
     }
 
   }
