@@ -57,11 +57,69 @@
     <div class="feedback">
         <!-- Whether answer is correct or not -->
     </div>
+    <div>
+      <input type="text" id="name" placeholder="your name">
+      <input type="text" id="score" placeholder="your score">
+      <input type="button" onclick="save()" value="Save">
+    </div>
+    <div id="score">
+      <ul id="scoreList"></ul>
+    </div>
   </div>
 </main>
 <footer>
   Created By : Jamie Yeung 2019
 </footer>
   <script src="script.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
+
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+  
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBsRhrADHoIybPJtzuOFcwEPccV63QyqFQ",
+      authDomain: "colorprojectjy.firebaseapp.com",
+      databaseURL: "https://colorprojectjy.firebaseio.com",
+      projectId: "colorprojectjy",
+      storageBucket: "",
+      messagingSenderId: "729870807197",
+      appId: "1:729870807197:web:f62299e0e3fa509f"
+    };
+ 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+        //do work
+            dbRef = firebase.database().ref();
+
+            const save = () =>{
+              app.newScore = {};
+              // will need to create the input/form dynamically
+              // saves name and value in to score
+              app.newScore.name = document.getElementById("name").value;
+              app.newScore.score = parseInt(document.getElementById("score").value);
+              dbRef.push(app.newScore);
+              console.log(app.newScore);
+            }
+
+            dbRef.orderByChild("score").on("value", function(data){
+              app.fireValue = data.val();
+              console.log(app.fireValue);
+              app.fireArray = [];
+              for(item in app.fireValue){
+                app.fireArray.push(`<li>${app.fireValue[item].name} - ${app.fireValue[item].score}</li>`)
+              }
+
+              document.getElementById("scoreList").innerHTML=`Scores ${app.fireArray} `;
+              console.log(app.fireArray)
+            });
+            // will want the one below if grabbing data from before
+            // dbRef.once("value");
+  </script>
 </body>
 </html>

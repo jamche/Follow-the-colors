@@ -1,5 +1,6 @@
 // test that script works console.log('hello world')
 
+// namespace
 const app = {};
 
 
@@ -240,6 +241,7 @@ app.init = () => {
     app.winner = true;
   }
 }
+
 
 // start the app
   app.init();  
