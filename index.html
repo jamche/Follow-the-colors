@@ -65,8 +65,7 @@
       </form>
     </div>
     <div id="score">
-      <ul id="scoreListName"></ul>
-      <ul id="scoreListScore"></ul>
+      <ul id="scoreList"></ul>
     </div>
   </div>
 </main>
@@ -109,42 +108,40 @@
               dbRef.push(app.newScore);
               console.log(app.newScore);
             }
-  
-
-            dbRef.orderByChild("score").on("value", function(data){
-              app.fireValue = data.val();
-              console.log(app.fireValue);
-              app.fireArray = [];
-              app.fireArrayNumber =[];
-              for(item in app.fireValue){
-                app.fireArray.push(`<li>${app.fireValue[item].name}</li>`)
+            dbRef.on('value', score => {
+              const scores = Object.values(score.val()).map(function(obj){
+                return obj;
+              })
+              const sorted = scores.sort((a,b) => b.score - a.score);
+              console.log(sorted)
+              listArr = []
+              for(item in sorted){
+                listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
               }
-              for(item in app.fireValue){
-                app.fireArrayNumber.push(app.fireValue[item].score)
-              }
+              console.log(listArr);
+              let listArrTopFive = listArr.slice(0,5).join('');
+              console.log(listArrTopFive);
 
-              document.getElementById("scoreListName").innerHTML =
-              `${app.fireArray.join('')}` 
-              
-              document.getElementById("scoreListScore").innerHTML = 
-              `${app.fireArrayNumber.sort(function(a,b){
-                return b-a;
-              }).join('')}`
-              
-              console.log(app.fireArray, app.fireArrayNumber);
+              document.getElementById("scoreList").innerHTML = listArrTopFive;
             });
-            // to add modal****
-            // will need button to initiate the modal once user wins/loses
-            // modal pops up
-            // form in the modal where input of name/score is used
-            // stores in firebase and added to leaderboard when refreshed
-            // leaderboard should show already on the homepage
 
 
-            // will want the one below if grabbing data from before
-            // dbRef.once("value");
 
-            // ul beside
+            // dbRef.orderByChild("score").on("value", function(data){
+            //   app.fireValue = data.val();
+            //   console.log(app.fireValue);
+
+
+
+
+            //   app.fireArray = [];
+            //   app.fireArrayNumber =[];           
+            //   // gets the list of names
+            //   // for(item in app.fireValue){
+            //   //   app.fireArray.push(`<li>${(app.fireValue[item].name)} - ${app.fireValue[item].score}</li>`)
+            //   // }
+            //   // console.log(app.fireArray);
+            // });
 
   </script>
 </body>
