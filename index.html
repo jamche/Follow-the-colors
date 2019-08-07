@@ -58,12 +58,15 @@
         <!-- Whether answer is correct or not -->
     </div>
     <div>
-      <input type="text" id="name" placeholder="your name">
-      <input type="text" id="score" placeholder="your score">
-      <input type="button" onclick="save()" value="Save">
+      <form action="submit" id="form">
+        <input type="text" id="name" placeholder="your name">
+        <!-- <input type="text" id="score" placeholder="your score"> -->
+        <input type="button" onclick="save()" value="Save">
+      </form>
     </div>
     <div id="score">
-      <ul id="scoreList"></ul>
+      <ul id="scoreListName"></ul>
+      <ul id="scoreListScore"></ul>
     </div>
   </div>
 </main>
@@ -102,24 +105,47 @@
               // will need to create the input/form dynamically
               // saves name and value in to score
               app.newScore.name = document.getElementById("name").value;
-              app.newScore.score = parseInt(document.getElementById("score").value);
+              app.newScore.score = app.level;
               dbRef.push(app.newScore);
               console.log(app.newScore);
             }
+  
 
             dbRef.orderByChild("score").on("value", function(data){
               app.fireValue = data.val();
               console.log(app.fireValue);
               app.fireArray = [];
+              app.fireArrayNumber =[];
               for(item in app.fireValue){
-                app.fireArray.push(`<li>${app.fireValue[item].name} - ${app.fireValue[item].score}</li>`)
+                app.fireArray.push(`<li>${app.fireValue[item].name}</li>`)
+              }
+              for(item in app.fireValue){
+                app.fireArrayNumber.push(app.fireValue[item].score)
               }
 
-              document.getElementById("scoreList").innerHTML=`Scores ${app.fireArray} `;
-              console.log(app.fireArray)
+              document.getElementById("scoreListName").innerHTML =
+              `${app.fireArray.join('')}` 
+              
+              document.getElementById("scoreListScore").innerHTML = 
+              `${app.fireArrayNumber.sort(function(a,b){
+                return b-a;
+              }).join('')}`
+              
+              console.log(app.fireArray, app.fireArrayNumber);
             });
+            // to add modal****
+            // will need button to initiate the modal once user wins/loses
+            // modal pops up
+            // form in the modal where input of name/score is used
+            // stores in firebase and added to leaderboard when refreshed
+            // leaderboard should show already on the homepage
+
+
             // will want the one below if grabbing data from before
             // dbRef.once("value");
+
+            // ul beside
+
   </script>
 </body>
 </html>

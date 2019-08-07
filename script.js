@@ -37,6 +37,12 @@ app.init = () => {
   app.yellowButton = document.querySelector("#yellow");
   // start button plays game when clicked
 
+  // prvent default the score
+  document.getElementById("form").addEventListener("submit",function(e){
+    e.preventDefault();
+  });
+
+
   app.powerOn.addEventListener('click', (e) => {
     if (app.powerOn.checked === true) {
       console.log('game is on')
