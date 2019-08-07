@@ -4,10 +4,16 @@ header{
   font-family: 'Nunito', sans-serif;
   border-bottom: 1px solid black;
   margin-bottom: 3%;
-      p{
-      text-align: left;
-      margin: 0 auto;
-      display: flex;
+
+  .headerInfoContainer{
+    display: flex;
+    
+    .instructions,
+    #score{
       width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+  }  
 }

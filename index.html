@@ -14,12 +14,19 @@
 
   <div class="wrapper">  
     <h1>Follow the Colors!</h1>
-    <div>
-      <h2>Instructions</h3>
-      <p> 1 - Turn on the game by clicking the "Power On" button and start button</p>
-      <p> 2 - Wait for the color sequence to show.</p>
-      <p> 3 - Click the correct colors in the order shown</p>
+    <div class="headerInfoContainer">
+      <div class="instructions">
+        <h2>Instructions</h3>
+        <p> 1 - Turn on the game by clicking the "Power On" button and start button</p>
+        <p> 2 - Wait for the color sequence to show.</p>
+        <p> 3 - Click the correct colors in the order shown</p>
+      </div>
+      <div id="score">
+        <h2>Scoreboard</h2>
+        <ul id="scoreList"></ul>
+      </div>
     </div>
+    
   </div>
 </header>
 <main class="wrapper">
@@ -64,9 +71,6 @@
         <input type="button" onclick="save()" value="Save">
       </form>
     </div>
-    <div id="score">
-      <ul id="scoreList"></ul>
-    </div>
   </div>
 </main>
 <footer>
@@ -109,41 +113,29 @@
               console.log(app.newScore);
             }
             dbRef.on('value', score => {
-              const scores = Object.values(score.val()).map(function(obj){
-                return obj;
+
+              // sets firebase value in to new array 
+              const scores = Object.values(score.val()).map(function(ranks){
+                return ranks;
               })
-              console.log(scores);
+              console.table(scores);
+
+              // sorts the array of objects by the score parameter from Highest to Lowest
               const sorted = scores.sort((a,b) => b.score - a.score);
-              // console.log(sorted)
+              console.table(sorted)
+              // make empty array to push listed items in by order
               listArr = []
+              // for every item in the array sorted, push a new <li> with the sorted item
               for(item in sorted){
                 listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
               }
-              console.log(listArr);
+              console.table(listArr);
+              // slice the new array and only include the top 5 scores
               let listArrTopFive = listArr.slice(0,5).join('');
-              console.log(listArrTopFive);
+              console.table(listArrTopFive);
 
               document.getElementById("scoreList").innerHTML = listArrTopFive;
             });
-
-
-
-            // dbRef.orderByChild("score").on("value", function(data){
-            //   app.fireValue = data.val();
-            //   console.log(app.fireValue);
-
-
-
-
-            //   app.fireArray = [];
-            //   app.fireArrayNumber =[];           
-            //   // gets the list of names
-            //   // for(item in app.fireValue){
-            //   //   app.fireArray.push(`<li>${(app.fireValue[item].name)} - ${app.fireValue[item].score}</li>`)
-            //   // }
-            //   // console.log(app.fireArray);
-            // });
-
   </script>
 </body>
 </html>

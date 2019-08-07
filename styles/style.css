@@ -241,13 +241,25 @@ header {
   margin-bottom: 3%;
 }
 
-header p {
-  text-align: left;
-  margin: 0 auto;
+header .headerInfoContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+header .headerInfoContainer .instructions,
+header .headerInfoContainer #score {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .gameInfo {
