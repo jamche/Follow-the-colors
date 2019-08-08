@@ -14,12 +14,19 @@
 
   <div class="wrapper">  
     <h1>Follow the Colors!</h1>
-    <div>
-      <h2>Instructions</h3>
-      <p> 1 - Turn on the game by clicking the "Power On" button and start button</p>
-      <p> 2 - Wait for the color sequence to show.</p>
-      <p> 3 - Click the correct colors in the order shown</p>
+    <div class="headerInfoContainer">
+      <div class="instructions">
+        <h2>Instructions</h3>
+        <p> 1 - Turn on the game by clicking the "Power On" button and start button</p>
+        <p> 2 - Wait for the color sequence to show.</p>
+        <p> 3 - Click the correct colors in the order shown</p>
+      </div>
+      <div id="score">
+        <h2>Scoreboard</h2>
+        <ul id="scoreList"></ul>
+      </div>
     </div>
+    
   </div>
 </header>
 <main class="wrapper">
@@ -57,11 +64,78 @@
     <div class="feedback">
         <!-- Whether answer is correct or not -->
     </div>
+    <div>
+      <form action="submit" id="form">
+        <input type="text" id="name" placeholder="your name">
+        <!-- <input type="text" id="score" placeholder="your score"> -->
+        <input type="button" onclick="save()" value="Save">
+      </form>
+    </div>
   </div>
 </main>
 <footer>
   Created By : Jamie Yeung 2019
 </footer>
   <script src="script.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
+
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+  
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBsRhrADHoIybPJtzuOFcwEPccV63QyqFQ",
+      authDomain: "colorprojectjy.firebaseapp.com",
+      databaseURL: "https://colorprojectjy.firebaseio.com",
+      projectId: "colorprojectjy",
+      storageBucket: "",
+      messagingSenderId: "729870807197",
+      appId: "1:729870807197:web:f62299e0e3fa509f"
+    };
+ 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+        //do work
+            dbRef = firebase.database().ref();
+
+            const save = () =>{
+              app.newScore = {};
+              // will need to create the input/form dynamically
+              // saves name and value in to score
+              app.newScore.name = document.getElementById("name").value;
+              app.newScore.score = app.level;
+              dbRef.push(app.newScore);
+              console.log(app.newScore);
+            }
+            dbRef.on('value', score => {
+
+              // sets firebase value in to new array 
+              const scores = Object.values(score.val()).map(function(ranks){
+                return ranks;
+              })
+              console.table(scores);
+
+              // sorts the array of objects by the score parameter from Highest to Lowest
+              const sorted = scores.sort((a,b) => b.score - a.score);
+              console.table(sorted)
+              // make empty array to push listed items in by order
+              listArr = []
+              // for every item in the array sorted, push a new <li> with the sorted item
+              for(item in sorted){
+                listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
+              }
+              console.table(listArr);
+              // slice the new array and only include the top 5 scores
+              let listArrTopFive = listArr.slice(0,5).join('');
+              console.table(listArrTopFive);
+
+              document.getElementById("scoreList").innerHTML = listArrTopFive;
+            });
+  </script>
 </body>
 </html>

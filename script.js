@@ -1,5 +1,6 @@
 // test that script works console.log('hello world')
 
+// namespace
 const app = {};
 
 
@@ -35,6 +36,12 @@ app.init = () => {
   app.greenButton = document.querySelector("#green");
   app.yellowButton = document.querySelector("#yellow");
   // start button plays game when clicked
+
+  // prvent default the score
+  document.getElementById("form").addEventListener("submit",function(e){
+    e.preventDefault();
+  });
+
 
   app.powerOn.addEventListener('click', (e) => {
     if (app.powerOn.checked === true) {
@@ -217,6 +224,7 @@ app.init = () => {
         app.clearGame();
       }, 2000)
     }
+    
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
       app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
       setInterval(() => {
@@ -231,16 +239,13 @@ app.init = () => {
       // speed that the color sequence is shown
       app.colorInterval = setInterval(app.turn, 800);
     }
-
   }
-
   app.youWin = () => {
     app.levelCount.innerHTML = `<h3>You won, amazing!</h3>`;
     app.powerOnGame = false;
     app.winner = true;
   }
 }
-
 // start the app
   app.init();  
 
