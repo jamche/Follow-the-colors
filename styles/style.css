@@ -179,26 +179,16 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden;
 }
 
-body {
+html {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#dbdac8), color-stop(#a0cbab), color-stop(#28bbba), color-stop(#00a3e0), to(#127aeb));
   background-image: linear-gradient(to right bottom, #dbdac8, #a0cbab, #28bbba, #00a3e0, #127aeb);
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 100vh;
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, li, a {
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, a {
   margin: 0;
   padding: 0;
 }
@@ -208,7 +198,12 @@ ul {
 }
 
 main {
-  margin-top: 10%;
+  height: 100%;
+  margin: 10% 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.gameContent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,7 +213,6 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Nunito', sans-serif;
 }
 
 .wrapper {
@@ -226,13 +220,17 @@ main {
   margin: 0 10%;
 }
 
-.powerArea,
-.gameInfo {
+.powerArea {
   width: 25%;
 }
 
 .buttonContainer {
   width: 50%;
+}
+
+.formInfo,
+.gameInfo {
+  width: 12.5%;
 }
 
 header {
@@ -263,14 +261,15 @@ header .headerInfoContainer #score {
 }
 
 header .headerInfoContainer .instructions ol {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
   text-align: left;
+}
+
+header .headerInfoContainer .scoreList {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .gameInfo {
@@ -322,7 +321,6 @@ header .headerInfoContainer .instructions ol {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 50%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -430,7 +428,7 @@ header .headerInfoContainer .instructions ol {
   box-shadow: 0px 9px 0px #778899;
 }
 
-@media (max-width: 910px) {
+@media (max-width: 920px) {
   .buttonContainer .buttons div .button {
     width: 100px;
     height: 100px;
@@ -470,7 +468,10 @@ header .headerInfoContainer .instructions ol {
 footer {
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  padding: 2% 0;
+  width: 100%;
+  padding: .5% 0;
   color: seashell;
   background: black;
+  position: fixed;
+  bottom: 0;
 }

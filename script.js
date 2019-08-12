@@ -232,9 +232,9 @@ app.init = () => {
     
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
       app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
-      setInterval(() => {
-        app.feedback.innerHTML = ``;
-      }, 2000); 
+      // setInterval(() => {
+      //   app.feedback.innerHTML = ``;
+      // }, 2000); 
 
       app.level++;
       app.chosenSequence = [];
@@ -242,15 +242,15 @@ app.init = () => {
       app.signal = 0;
       app.levelCount.innerHTML = `<h3>Level ${app.level}</h3>`;
       // speed that the color sequence is shown
-      app.colorInterval = setInterval(app.turn, 800);
+      app.colorInterval = setInterval(app.turn, 600);
     }
   }
   // function to create form 
-  
+
 
   // game is won
   app.youWin = () => {
-    app.levelCount.innerHTML = `<h3>You won, well done!</h3>`;
+    app.levelCount.innerHTML = `<h3>You won, well done! Enter your name to save your score </h3>`;
     app.powerOnGame = false;
     app.winner = true;
   }

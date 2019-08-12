@@ -17,9 +17,14 @@ header{
       // justify-content: space-between;
     }
     .instructions ol{
-      display: flex;
-      flex-direction: column;
+      width: 50%;
+      margin: 0 auto;
       text-align: left;
+    }
+    .scoreList{
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
     }
   }  
 }

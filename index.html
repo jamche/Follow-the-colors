@@ -31,42 +31,43 @@
     
   </div>
 </header>
-<main class="wrapper">
-
-  <div class="powerArea">
-    <div class="powerInputArea">
-      <label for="powerButton"><h3>Power</h3></label>
-      <input tabindex = 1 type="checkbox" id="powerButton" autocomplete="off">
-    </div>
-    <div class="startButton">
-      <button tabindex = 1 id="start"><h3>Start</h3></button>
-    </div>
-    <div class="gameStatus">
-      <h3>Game is Off turn the game on</h3>
-    </div>
-  </div>
-<!-- colored buttons -->
-  <div class="buttonContainer">
-    <div class="buttons">
-      <div>
-        <button class="button" id="red"></button>
-        <button class="button" id="blue"></button>
+<main>
+  <div class="gameContent wrapper">
+    <div class="powerArea">
+      <div class="powerInputArea">
+        <label for="powerButton"><h3>Power</h3></label>
+        <input tabindex = 1 type="checkbox" id="powerButton" autocomplete="off">
       </div>
-      <div>
-        <button class="button" id="green"></button>
-        <button class="button" id="yellow"></button>
+      <div class="startButton">
+        <button tabindex = 1 id="start"><h3>Start</h3></button>
+      </div>
+      <div class="gameStatus">
+        <h3>Game is Off turn the game on</h3>
       </div>
     </div>
-  </div>  
+  <!-- colored buttons -->
+    <div class="buttonContainer">
+      <div class="buttons">
+        <div>
+          <button class="button" id="red"></button>
+          <button class="button" id="blue"></button>
+        </div>
+        <div>
+          <button class="button" id="green"></button>
+          <button class="button" id="yellow"></button>
+        </div>
+      </div>
+    </div>  
 
-  <div class="gameInfo">
-    <div class="feedback">
+    <div class="gameInfo">
+      <div class="level">
+          <!-- level info is appended here -->
+      </div>
+      <div class="feedback">
         <!-- Whether answer is correct or not -->
+      </div>
     </div>
-    <div class="level">
-        <!-- level info is appended here -->
-    </div>
-    <div>
+    <div class="formInfo">
       <form action="submit" id="form">
         <input type="text" id="name" placeholder="your name">
         <!-- <input type="text" id="score" placeholder="your score"> -->
@@ -76,7 +77,9 @@
   </div>
 </main>
 <footer>
-  Created By : Jamie Yeung 2019
+  <div>
+    <h4>Created By : Jamie Yeung 2019</h4>
+  </div>
 </footer>
   <script src="script.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
