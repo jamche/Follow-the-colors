@@ -1,5 +1,7 @@
 body{
   background-image: linear-gradient(to right bottom, #dbdac8, #a0cbab, #28bbba, #00a3e0, #127aeb);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

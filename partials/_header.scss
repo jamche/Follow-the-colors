@@ -10,10 +10,16 @@ header{
     
     .instructions,
     #score{
+      height: 100%;
       width: 50%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
+    }
+    .instructions ol{
+      display: flex;
+      flex-direction: column;
+      text-align: left;
     }
   }  
 }

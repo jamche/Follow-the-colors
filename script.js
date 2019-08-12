@@ -208,28 +208,29 @@ app.init = () => {
       app.correctPick = false;
     }
     // at game end
-    if (app.chosenSequence.length === 10 && app.correctPick) {
+    if (app.chosenSequence.length === 5 && app.correctPick) {
       app.youWin();
     }
     if(app.correctPick === false){
       app.signalFlash();
       app.powerOnGame = false;
       app.feedback.innerHTML = `<h3>Wrong choice</h3>`;
-      setInterval(() => {
-        app.feedback.innerHTML = ``;        
-      }, 2000);
+      app.levelCount.innerHTML = `<h3>You made it to Level ${app.level}. Restart to try again. Enter your name below to add your name to the scoreboard</h3>`;
+      app.clearGame();
+      // setInterval(() => {
+      //   app.feedback.innerHTML = ``;        
+      // }, 500);
 
-      setTimeout(()=>{
-        app.levelCount.innerHTML = `<h3>Nice try, you made it to Level ${app.level}. Restart to try again</h3>`;
-        app.clearGame();
-      }, 2000)
+      // setTimeout(()=>{
+
+      // }, 200)
     }
     
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
       app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
       setInterval(() => {
         app.feedback.innerHTML = ``;
-      }, 5000); 
+      }, 2000); 
 
       app.level++;
       app.chosenSequence = [];
@@ -240,8 +241,9 @@ app.init = () => {
       app.colorInterval = setInterval(app.turn, 800);
     }
   }
+  // function to create form 
   app.youWin = () => {
-    app.levelCount.innerHTML = `<h3>You won, amazing!</h3>`;
+    app.levelCount.innerHTML = `<h3>You won, well done!</h3>`;
     app.powerOnGame = false;
     app.winner = true;
   }
