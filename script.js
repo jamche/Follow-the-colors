@@ -7,20 +7,28 @@ const app = {};
 app.init = () => {
   // need empty array to have order of color sequence
   app.colorSequence = [];
+
   // set array to have the selections of player
   app.chosenSequence =[];
+
   // turn on the game, set to false to default the game to off
   app.powerOnGame = false;
+
   // variable for what level player is on
   app.level;
+
   // if pick was correct
   app.correctPick;
+
   // does the program need to show the level, or is it user turn
   app.showSequence;
+
   // when color signals
   app.signal;
+
   // to clear the colors when signal shows
   app.colorInterval;
+
   // winner is true or false
   app.winner;
 
@@ -204,7 +212,7 @@ app.init = () => {
 
   app.isCorrect = () => {
     if(app.chosenSequence[app.chosenSequence.length - 1] !== app.colorSequence[app.chosenSequence.length - 1]){
-      // if the pick is not correct, answer is wrong
+      // if answer is wrong
       app.correctPick = false;
     }
     // at game end
@@ -214,16 +222,12 @@ app.init = () => {
     if(app.correctPick === false){
       app.signalFlash();
       app.powerOnGame = false;
-      app.feedback.innerHTML = `<h3>Wrong choice</h3>`;
-      app.levelCount.innerHTML = `<h3>You made it to Level ${app.level}. Restart to try again. Enter your name below to add your name to the scoreboard</h3>`;
+      app.feedback.innerHTML = '';
+      app.levelCount.innerHTML = 
+      `<h3>Wrong choice!</h3> 
+      <h3>You made it to Level ${app.level}.<br> Restart to try again.</h3>
+      <h3>Enter your name below to add your name to the scoreboard</h3>`;
       app.clearGame();
-      // setInterval(() => {
-      //   app.feedback.innerHTML = ``;        
-      // }, 500);
-
-      // setTimeout(()=>{
-
-      // }, 200)
     }
     
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
@@ -242,6 +246,9 @@ app.init = () => {
     }
   }
   // function to create form 
+  
+
+  // game is won
   app.youWin = () => {
     app.levelCount.innerHTML = `<h3>You won, well done!</h3>`;
     app.powerOnGame = false;

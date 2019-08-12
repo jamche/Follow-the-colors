@@ -70,7 +70,7 @@
       <form action="submit" id="form">
         <input type="text" id="name" placeholder="your name">
         <!-- <input type="text" id="score" placeholder="your score"> -->
-        <input type="button" onclick="save()" value="Save">
+        <input type="button" onclick="saveScoreOrNot()" value="Save">
       </form>
     </div>
   </div>
@@ -105,17 +105,23 @@
         //do work
             dbRef = firebase.database().ref();
 
-            const save = () =>{
-              app.newScore = {};
-              // will need to create the input/form dynamically
-              // saves name and value in to score
-              app.newScore.name = document.getElementById("name").value;
-              app.newScore.score = app.level;
-              dbRef.push(app.newScore);
-              console.log(app.newScore);
+            function saveScoreOrNot(){
+              const name = document.getElementById("name").value;
+              if (name == "") {
+                  alert('Please enter a name to submit');
+                  return false;
+              } else {
+                app.newScore = {};
+                // will need to create the input/form dynamically
+                // saves name and value in to score
+                app.newScore.name = document.getElementById("name").value;
+                app.newScore.score = app.level;
+                dbRef.push(app.newScore);
+                console.log(app.newScore);
+              }
+
             }
             dbRef.on('value', score => {
-
               // sets firebase value in to new array 
               const scores = Object.values(score.val()).map(function(ranks){
                 return ranks;
@@ -128,9 +134,12 @@
               // make empty array to push listed items in by order
               listArr = []
               // for every item in the array sorted, push a new <li> with the sorted item
-              for(item in sorted){
-                listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
-              }
+
+
+                for(item in sorted){
+                  listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
+                }
+
               // console.table(listArr);
               // slice the new array and only include the top 5 scores
               let listArrTopFive = listArr.slice(0,5).join('');
@@ -138,6 +147,27 @@
 
               document.getElementById("scoreList").innerHTML = listArrTopFive;
             });
+
+
+
+            
+// const empty = () => {
+// if (name == "") {
+// alert('Please enter a name to submit');
+// return false;
+// };
+// }
+
+// const save = () => {
+// app.newScore = {};
+// // will need to create the input/form dynamically
+// // saves name and value in to score
+// app.newScore.name = document.getElementById("name").value;
+// app.newScore.score = app.level;
+// dbRef.push(app.newScore);
+// console.log(app.newScore);
+// }
   </script>
 </body>
 </html>
+
