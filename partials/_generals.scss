@@ -4,6 +4,8 @@ html{
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+
 }
 h1,h2,h3,h4,h5,h6,p,ul,ol,li,a{
   margin: 0;
@@ -14,8 +16,7 @@ ul{
 }
 main{
   height: 100%;
-  margin: 10% 0;
-  font-family: 'Nunito', sans-serif;
+  margin: 5% 0;
 }
 .gameContent{
   display: flex;
@@ -27,13 +28,10 @@ main{
   margin: 0 10%;
   
 }
-.powerArea{
+.powerArea,
+.gameInfo{
   width: 25%;
 }
 .buttonContainer{
   width: 50%;
-}
-.formInfo,
-.gameInfo{
-  width:12.5%
 }

@@ -46,18 +46,58 @@ app.init = () => {
   // start button plays game when clicked
 
   // prvent default the score
-  document.getElementById("form").addEventListener("submit",function(e){
-    e.preventDefault();
-  });
+
+  // function to create form 
+  const f = document.createElement("form");
+  f.setAttribute("action", "submit")
+  f.setAttribute("id", "form")
+
+  const textInput = document.createElement("input");
+  textInput.type = "text"
+  textInput.id = "name"
+  textInput.placeholder = "Enter Name";
+
+  const btn = document.createElement("input")
+  btn.type = "Submit"
+  // btn.value = "Save"
+  btn.className = "btn"
+  // btn.innerHTML = "Submit"
+  btn.onclick = function saveScoreOrNot() {
+  const name = document.getElementById("name").value;
+    if (name == "") {
+      alert('Please enter a name to submit');
+      return false;
+    } else {
+      app.newScore = {};
+      // will need to create the input/form dynamically
+      // saves name and value in to score
+      app.newScore.name = document.getElementById("name").value;
+      app.newScore.score = app.level;
+      dbRef.push(app.newScore);
+      console.log(app.newScore);
+    }
+  }
+
+  function createForm() {
+    document.querySelector(".formInfo").appendChild(f);
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+    // create inputs and button
+    document.querySelector("#form").appendChild(textInput);
+    document.querySelector("#form").appendChild(btn);
+    document.querySelector(".btn").tabIndex = 0;
+  }
+
 
 
   app.powerOn.addEventListener('click', (e) => {
     if (app.powerOn.checked === true) {
-      console.log('game is on')
+      // console.log('game is on')
       app.powerOnGame = true;
       app.gameOnOrOff.innerHTML = `<h3>Game is On</h3>`
     } else if(app.powerOn.checked === false) {
-      console.log('game is off')
+      // console.log('game is off')
       app.powerOnGame = false;
       app.gameOnOrOff.innerHTML = `<h3>Game is Off, turn the game on</h3>`
       app.clearGame();
@@ -75,7 +115,7 @@ app.init = () => {
     app.levelCount.innerHTML = `<h3>You are on : Level ${app.level}</h3>`;
     app.correctPick = true;
     // levels of the game
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 3; i++) {
       // 4 colors, so multiply by 4 and add 1 to get whole number between 1 - 5, math.floor rounds down the decimal, so number will be between 1 - 4(color options)
       app.colorSequence.push(Math.floor(Math.random() * 4) + 1);
     }
@@ -216,7 +256,7 @@ app.init = () => {
       app.correctPick = false;
     }
     // at game end
-    if (app.chosenSequence.length === 5 && app.correctPick) {
+    if (app.chosenSequence.length === 3 && app.correctPick) {
       app.youWin();
     }
     if(app.correctPick === false){
@@ -227,15 +267,12 @@ app.init = () => {
       `<h3>Wrong choice!</h3> 
       <h3>You made it to Level ${app.level}.<br> Restart to try again.</h3>
       <h3>Enter your name below to add your name to the scoreboard</h3>`;
+      createForm();
       app.clearGame();
     }
     
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
       app.feedback.innerHTML = `<h3>Correct choice!</h3>`;
-      // setInterval(() => {
-      //   app.feedback.innerHTML = ``;
-      // }, 2000); 
-
       app.level++;
       app.chosenSequence = [];
       app.showSequence = true;
@@ -245,12 +282,11 @@ app.init = () => {
       app.colorInterval = setInterval(app.turn, 600);
     }
   }
-  // function to create form 
-
 
   // game is won
   app.youWin = () => {
     app.levelCount.innerHTML = `<h3>You won, well done! Enter your name to save your score </h3>`;
+    createForm();
     app.powerOnGame = false;
     app.winner = true;
   }
@@ -258,3 +294,7 @@ app.init = () => {
 // start the app
   app.init();  
 
+ 
+ 
+
+   

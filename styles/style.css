@@ -186,6 +186,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 16px;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, li, a {
@@ -199,8 +200,7 @@ ul {
 
 main {
   height: 100%;
-  margin: 10% 0;
-  font-family: 'Nunito', sans-serif;
+  margin: 5% 0;
 }
 
 .gameContent {
@@ -220,17 +220,13 @@ main {
   margin: 0 10%;
 }
 
-.powerArea {
+.powerArea,
+.gameInfo {
   width: 25%;
 }
 
 .buttonContainer {
   width: 50%;
-}
-
-.formInfo,
-.gameInfo {
-  width: 12.5%;
 }
 
 header {
@@ -310,6 +306,10 @@ header .headerInfoContainer .scoreList {
   width: 50%;
 }
 
+.gameInfo .level h3 {
+  margin: 10px 0;
+}
+
 .powerArea {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -361,6 +361,11 @@ header .headerInfoContainer .scoreList {
   left: 20px;
   -webkit-box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
           box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
+}
+
+.powerArea .startButton {
+  width: 100%;
+  margin: 10px 0;
 }
 
 .powerArea .startButton button {
@@ -463,6 +468,43 @@ header .headerInfoContainer .scoreList {
 
 #yellow {
   background: goldenrod;
+}
+
+#form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#form #name {
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  width: 100%;
+  padding: 10px 20px;
+  margin-bottom: 5%;
+}
+
+#form .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.17em;
+  font-weight: bold;
+  width: 100%;
 }
 
 footer {
