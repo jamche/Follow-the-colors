@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, a {
 }
 
 ul {
-  list-style: none;
+  list-style: decimal;
 }
 
 main {
@@ -256,16 +256,19 @@ header .headerInfoContainer #score {
           flex-direction: column;
 }
 
-header .headerInfoContainer .instructions ol {
+header .headerInfoContainer .instructions,
+header .headerInfoContainer #score {
   width: 50%;
+}
+
+header .headerInfoContainer .instructions ul {
   margin: 0 auto;
   text-align: left;
 }
 
-header .headerInfoContainer .scoreList {
-  width: 50%;
+header .headerInfoContainer #scoreList {
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 .gameInfo {
@@ -303,7 +306,7 @@ header .headerInfoContainer .scoreList {
 }
 
 .gameInfo .feedback {
-  width: 50%;
+  width: 100%;
 }
 
 .gameInfo .level h3 {
@@ -427,8 +430,8 @@ header .headerInfoContainer .scoreList {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   -webkit-box-shadow: 0px 9px 0px #778899;
   box-shadow: 0px 9px 0px #778899;
 }

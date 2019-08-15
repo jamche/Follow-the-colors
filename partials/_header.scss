@@ -16,15 +16,17 @@ header{
       flex-direction: column;
       // justify-content: space-between;
     }
-    .instructions ol{
+    .instructions,
+    #score{
       width: 50%;
-      margin: 0 auto;
-      text-align: left;
     }
-    .scoreList{
-      width: 50%;
-      margin: 0 auto;
-      text-align: center;
+      .instructions ul{
+        margin: 0 auto;
+        text-align: left;
+      }
+      #scoreList{
+        margin: 0 auto;
+        text-align: left;
+      }
     }
   }  
-}
