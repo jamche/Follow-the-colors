@@ -203,21 +203,15 @@ main {
   margin: 5% 0;
 }
 
-.gameContent {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .wrapper {
   max-width: 1400px;
   margin: 0 10%;
+}
+
+@media (max-width: 370px) {
+  .wrapper {
+    margin: 0 5%;
+  }
 }
 
 .powerArea,
@@ -237,10 +231,27 @@ header {
   margin-bottom: 3%;
 }
 
+@media (max-width: 730px) {
+  header h1 {
+    margin: 5% 0;
+  }
+}
+
 header .headerInfoContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 2%;
+}
+
+@media (max-width: 730px) {
+  header .headerInfoContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: left;
+  }
 }
 
 header .headerInfoContainer .instructions,
@@ -256,9 +267,24 @@ header .headerInfoContainer #score {
           flex-direction: column;
 }
 
+@media (max-width: 730px) {
+  header .headerInfoContainer .instructions,
+  header .headerInfoContainer #score {
+    width: 100%;
+    margin: 2% 0;
+  }
+}
+
 header .headerInfoContainer .instructions,
 header .headerInfoContainer #score {
   width: 50%;
+}
+
+@media (max-width: 730px) {
+  header .headerInfoContainer .instructions,
+  header .headerInfoContainer #score {
+    width: 100%;
+  }
 }
 
 header .headerInfoContainer .instructions ul {
@@ -266,54 +292,40 @@ header .headerInfoContainer .instructions ul {
   text-align: left;
 }
 
+@media (max-width: 730px) {
+  header .headerInfoContainer .instructions ul,
+  header .headerInfoContainer #score ul {
+    margin-left: 20px;
+  }
+}
+
 header .headerInfoContainer #scoreList {
   margin: 0 auto;
   text-align: left;
 }
 
-.gameInfo {
+.gameContent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.gameInfo .start {
-  background: seashell;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: seashell;
-  border-radius: 50%;
 }
 
-.gameInfo .start button {
-  background: seashell;
+@media (max-width: 730px) {
+  .gameContent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
-.gameInfo .level,
-.gameInfo .feedback {
-  margin: 3% 0;
-}
-
-.gameInfo .feedback {
-  width: 100%;
-}
-
-.gameInfo .level h3 {
-  margin: 10px 0;
-}
-
-.powerArea {
+.gameContent .powerArea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -329,7 +341,17 @@ header .headerInfoContainer #scoreList {
           justify-content: space-between;
 }
 
-.powerArea input#powerButton {
+@media (max-width: 730px) {
+  .gameContent .powerArea {
+    width: 40%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
+.gameContent .powerArea input#powerButton {
   position: relative;
   -webkit-appearance: none;
   width: 50px;
@@ -341,7 +363,7 @@ header .headerInfoContainer #scoreList {
           box-shadow: inset -20px 0 0 0 #fff;
 }
 
-.powerArea input#powerButton:after {
+.gameContent .powerArea input#powerButton:after {
   content: "";
   position: absolute;
   top: 1px;
@@ -354,24 +376,24 @@ header .headerInfoContainer #scoreList {
           box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.powerArea input#powerButton:checked {
+.gameContent .powerArea input#powerButton:checked {
   -webkit-box-shadow: inset 20px 0 0 0 #4ed164;
           box-shadow: inset 20px 0 0 0 #4ed164;
   border-color: #4ed164;
 }
 
-.powerArea input#powerButton:checked:after {
+.gameContent .powerArea input#powerButton:checked:after {
   left: 20px;
   -webkit-box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
           box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
 }
 
-.powerArea .startButton {
+.gameContent .powerArea .startButton {
   width: 100%;
   margin: 10px 0;
 }
 
-.powerArea .startButton button {
+.gameContent .powerArea .startButton button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -385,7 +407,7 @@ header .headerInfoContainer #scoreList {
   border-radius: 15px;
 }
 
-.powerArea .gameStatus {
+.gameContent .powerArea .gameStatus {
   text-align: left;
 }
 
@@ -400,6 +422,12 @@ header .headerInfoContainer #scoreList {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 5%;
+}
+
+@media (max-width: 730px) {
+  .buttonContainer {
+    width: 100%;
+  }
 }
 
 .buttonContainer .buttons {
@@ -471,6 +499,74 @@ header .headerInfoContainer #scoreList {
 
 #yellow {
   background: goldenrod;
+}
+
+.gameInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 730px) {
+  .gameInfo {
+    width: 100%;
+  }
+}
+
+.gameInfo .start {
+  background: seashell;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: seashell;
+  border-radius: 50%;
+}
+
+.gameInfo .start button {
+  background: seashell;
+}
+
+.gameInfo .level,
+.gameInfo .feedback {
+  margin: 3% 0;
+}
+
+@media (max-width: 730px) {
+  .gameInfo .level,
+  .gameInfo .feedback {
+    margin: 1% 0;
+    text-align: center;
+  }
+}
+
+.gameInfo .feedback {
+  width: 100%;
+}
+
+.gameInfo .level h3 {
+  margin: 10px 0;
+}
+
+@media (max-width: 730px) {
+  .gameInfo .level h3 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 730px) {
+  .gameInfo .formInfo h3 {
+    text-align: center;
+  }
 }
 
 #form {

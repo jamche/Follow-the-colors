@@ -4,6 +4,9 @@
   justify-content: center;
   align-items: center; 
   margin: 0 5%;
+  @include media(730px){
+    width: 100%;
+  }
   .buttons {  
     text-align: center;
     width: 100%;

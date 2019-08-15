@@ -4,25 +4,46 @@ header{
   font-family: 'Nunito', sans-serif;
   border-bottom: 1px solid black;
   margin-bottom: 3%;
-
+  
+  h1{
+    @include media(730px){
+      margin:5% 0;
+    }
+  }
   .headerInfoContainer{
     display: flex;
-    
+    margin-bottom: 2%;
+    @include media(730px){
+      flex-direction: column;
+      text-align: left;
+    }
     .instructions,
     #score{
       height: 100%;
       width: 50%;
       display: flex;
       flex-direction: column;
-      // justify-content: space-between;
+      @include media(730px){
+        width: 100%;
+        margin: 2% 0;
+      }
     }
     .instructions,
     #score{
       width: 50%;
+      @include media(730px){
+        width: 100%;
+      }
     }
       .instructions ul{
         margin: 0 auto;
         text-align: left;
+      }
+      .instructions ul,
+      #score ul{
+        @include media(730px){
+          margin-left: 20px;
+        }
       }
       #scoreList{
         margin: 0 auto;

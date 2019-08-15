@@ -44,10 +44,8 @@ app.init = () => {
   app.blueButton = document.querySelector("#blue");
   app.greenButton = document.querySelector("#green");
   app.yellowButton = document.querySelector("#yellow");
-  // start button plays game when clicked
-
-  // prvent default the score
-
+  //Default text when off 
+  app.gameOnOrOff.innerHTML = `<h3>Game is off, turn the game on to start.</h3>`
   // function to create form 
   const f = document.createElement("form");
   f.setAttribute("action", "submit")
@@ -77,6 +75,7 @@ app.init = () => {
       app.newScore.name = document.getElementById("name").value;
       app.newScore.score = app.level;
       dbRef.push(app.newScore);
+      app.feedback.style = "display:none";
       app.formInfo.innerHTML = '<h3>Score Saved!</h3>';
       console.log(app.newScore);
 
@@ -108,8 +107,7 @@ app.init = () => {
       app.colorSequence = [];
       app.levelCount.innerHTML = "";
       app.formInfo.innerHTML = "";
-
-      app.gameOnOrOff.innerHTML = `<h3>Game is off, turn the game on</h3>`
+      app.gameOnOrOff.innerHTML = `<h3>Game is off, turn the game on to start.</h3>`
       app.clearGame();
       clearInterval(app.colorInterval);
       document.getElementById('start').style.visibility = 'visible';
@@ -128,6 +126,7 @@ app.init = () => {
     app.feedback.innerHTML = "";
     app.correctPick = true;
     app.formInfo.innerHTML ='';
+    app.feedback.style = "display:initial";
     
     // levels of the game
     for (let i = 0; i < 3; i++) {

@@ -1,56 +1,66 @@
-.powerArea{
+.gameContent{
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  
-  input#powerButton{
-  position: relative;
-  -webkit-appearance: none;
-  // outline: none;
-  width: 50px;
-  height: 30px;
-  background-color: #fff;
-  border: 1px solid #D9DADC;
-  border-radius: 50px;
-  box-shadow: inset -20px 0 0 0 #fff;
+  @include media(730px){
+    flex-direction: column;
   }
-  input#powerButton:after{
-    content: "";
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    background: transparent;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
-  }
-    input#powerButton:checked{
-      box-shadow: inset 20px 0 0 0 #4ed164;
-      border-color: #4ed164;
+  .powerArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    @include media(730px){
+      width: 40%;
+      flex-direction: column-reverse;
+    }    
+    input#powerButton{
+    position: relative;
+    -webkit-appearance: none;
+    // outline: none;
+    width: 50px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #D9DADC;
+    border-radius: 50px;
+    box-shadow: inset -20px 0 0 0 #fff;
     }
-    input#powerButton:checked:after{
-      left: 20px;
-      box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
+    input#powerButton:after{
+      content: "";
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      background: transparent;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
     }
-  
-    .startButton{
-      width: 100%;
-      margin: 10px 0;
-      button{
-        display: flex;
-        justify-content: center;
-        margin:5% 0;
-        width: 100%;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 15px;
+      input#powerButton:checked{
+        box-shadow: inset 20px 0 0 0 #4ed164;
+        border-color: #4ed164;
       }
+      input#powerButton:checked:after{
+        left: 20px;
+        box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
+      }
+    
+      .startButton{
+        width: 100%;
+        margin: 10px 0;
+        button{
+          display: flex;
+          justify-content: center;
+          margin:5% 0;
+          width: 100%;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 15px;
+        }
+      }
+    .gameStatus{
+      text-align: left;
     }
-  .gameStatus{
-    text-align: left;
   }
 }
-
 

@@ -18,14 +18,13 @@ main{
   height: 100%;
   margin: 5% 0;
 }
-.gameContent{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .wrapper{
   max-width: 1400px;
   margin: 0 10%;
+  @include media(370px){
+    margin: 0 5%;
+  }
   
 }
 .powerArea,

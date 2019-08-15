@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @include media(730px){
+    width: 100%;
+  }
   .start{
     background: seashell;
     display: flex;
@@ -14,13 +17,24 @@
   }
   .level,
   .feedback{
-    margin:3% 0 ;
+    margin:3% 0;
+    @include media(730px){
+      margin:1% 0;
+      text-align: center;
+    }
   }
   .feedback{
     width: 100%;
   }
   .level h3{
     margin: 10px 0;
-
+    @include media(730px){
+      text-align: center;
+    }
+  }
+  .formInfo h3{
+    @include media(730px){
+      text-align: center;
+    }
   }
 }
