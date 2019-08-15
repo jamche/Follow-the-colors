@@ -13,6 +13,9 @@
     @include media(730px){
       width: 40%;
       flex-direction: column-reverse;
+    }
+    @include media(380px){
+      width: 100%;
     }    
     input#powerButton{
     position: relative;

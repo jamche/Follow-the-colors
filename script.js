@@ -145,7 +145,7 @@ app.init = () => {
     }
     else if(app.powerOnGame === true || app.winner === false){
       app.start();
-      document.getElementById('start').style.visibility = 'hidden';
+      app.startGame.style = 'display:none';
     }
   });
   app.turn = () => {
@@ -281,7 +281,7 @@ app.init = () => {
       <h3>Enter your name below to record your score</h3>`;
       createForm();
       app.clearGame();
-      document.getElementById('start').style.visibility = 'visible';
+      app.startGame.style = 'display:initial';
     }
     
     if(app.level === app.chosenSequence.length && app.correctPick && !app.winner ){
@@ -303,7 +303,7 @@ app.init = () => {
     createForm();
     app.powerOnGame = false;
     app.winner = true;
-    document.getElementById('start').style.visibility = 'visible';
+    app.startGame.style = 'display:initial';
   }
 }
 // start the app
