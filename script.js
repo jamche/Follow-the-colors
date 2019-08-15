@@ -76,9 +76,9 @@ app.init = () => {
       app.newScore.score = app.level;
       dbRef.push(app.newScore);
       app.feedback.style = "display:none";
+      app.levelCount.style = "display:none";
       app.formInfo.innerHTML = '<h3>Score Saved!</h3>';
       console.log(app.newScore);
-
     }
   }
 
@@ -100,7 +100,7 @@ app.init = () => {
       // console.log('game is on')
       app.powerOnGame = true;
       app.gameOnOrOff.innerHTML = `<h3>Game is On</h3>`
-      document.getElementById('start').style.visibility = 'visible';
+      app.startGame.style= 'display:initial';
     } else if(app.powerOn.checked === false) {
       // console.log('game is off')
       app.powerOnGame = false;
@@ -110,8 +110,8 @@ app.init = () => {
       app.gameOnOrOff.innerHTML = `<h3>Game is off, turn the game on to start.</h3>`
       app.clearGame();
       clearInterval(app.colorInterval);
-      document.getElementById('start').style.visibility = 'visible';
-
+      app.startGame.style = 'display:none';
+      app.startGame.style = 'display:initial';
     }
   }); 
 
@@ -127,6 +127,7 @@ app.init = () => {
     app.correctPick = true;
     app.formInfo.innerHTML ='';
     app.feedback.style = "display:initial";
+    app.levelCount.style = "display:initial";
     
     // levels of the game
     for (let i = 0; i < 3; i++) {

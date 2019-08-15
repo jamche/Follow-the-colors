@@ -351,6 +351,12 @@ header .headerInfoContainer #scoreList {
   }
 }
 
+@media (max-width: 600px) {
+  .gameContent .powerArea {
+    width: 60%;
+  }
+}
+
 @media (max-width: 380px) {
   .gameContent .powerArea {
     width: 100%;

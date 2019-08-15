@@ -14,13 +14,15 @@
       width: 40%;
       flex-direction: column-reverse;
     }
+    @include media(600px){
+      width: 60%;
+    }
     @include media(380px){
       width: 100%;
     }    
     input#powerButton{
     position: relative;
     -webkit-appearance: none;
-    // outline: none;
     width: 50px;
     height: 30px;
     background-color: #fff;
