@@ -17,11 +17,13 @@
     <div class="headerInfoContainer">
       <div class="instructions">
         <h2>Instructions</h3>
-        <ol>
-          <li>Turn on the game by clicking the "Power On" button and start button</li>
-          <li>Wait for the color sequence to show.</li>
-          <li>Click the correct colors in the order shown</li>
-        </ol>
+        <ul>
+          <li>Turn on the game by clicking the "Power On" button and start button.</li>
+          <li>Wait for the colors to show.</li>
+          <li>Click the correct colors in the order shown until you've won.</li>
+          <li>To Reset the game, hit "Start" again or turn the game off and on.</li>
+          <li>If you've won, reset the game by switching the game off and on.</li>
+        </ul>
       </div>
       <div id="score">
         <h2>Scoreboard - Top 5</h2>
@@ -31,52 +33,52 @@
     
   </div>
 </header>
-<main class="wrapper">
-
-  <div class="powerArea">
-    <div class="powerInputArea">
-      <label for="powerButton"><h3>Power</h3></label>
-      <input tabindex = 1 type="checkbox" id="powerButton" autocomplete="off">
-    </div>
-    <div class="startButton">
-      <button tabindex = 1 id="start"><h3>Start</h3></button>
-    </div>
-    <div class="gameStatus">
-      <h3>Game is Off turn the game on</h3>
-    </div>
-  </div>
-<!-- colored buttons -->
-  <div class="buttonContainer">
-    <div class="buttons">
-      <div>
-        <button class="button" id="red"></button>
-        <button class="button" id="blue"></button>
+<main>
+  <div class="gameContent wrapper">
+    <div class="powerArea">
+      <div class="powerInputArea">
+        <label for="powerButton"><h3>Power</h3></label>
+        <input tabindex = 1 type="checkbox" id="powerButton" autocomplete="off">
       </div>
-      <div>
-        <button class="button" id="green"></button>
-        <button class="button" id="yellow"></button>
+      <div class="startButton">
+        <button tabindex = 1 id="start"><h3>Start</h3></button>
+      </div>
+      <div class="gameStatus">
+        <h3>Game is Off turn the game on</h3>
       </div>
     </div>
-  </div>  
+  <!-- colored buttons -->
+    <div class="buttonContainer">
+      <div class="buttons">
+        <div>
+          <button class="button" id="red"></button>
+          <button class="button" id="blue"></button>
+        </div>
+        <div>
+          <button class="button" id="green"></button>
+          <button class="button" id="yellow"></button>
+        </div>
+      </div>
+    </div>  
 
-  <div class="gameInfo">
-    <div class="feedback">
+    <div class="gameInfo">
+      <div class="level">
+          <!-- level info is appended here -->
+      </div>
+      <div class="feedback">
         <!-- Whether answer is correct or not -->
+      </div>
+      <div class="formInfo">
+        <!-- form created here from js -->
+      </div>
     </div>
-    <div class="level">
-        <!-- level info is appended here -->
-    </div>
-    <div>
-      <form action="submit" id="form">
-        <input type="text" id="name" placeholder="your name">
-        <!-- <input type="text" id="score" placeholder="your score"> -->
-        <input type="button" onclick="save()" value="Save">
-      </form>
-    </div>
+    
   </div>
 </main>
 <footer>
-  Created By : Jamie Yeung 2019
+  <div>
+    <h4>Created By : Jamie Yeung 2019</h4>
+  </div>
 </footer>
   <script src="script.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -102,42 +104,31 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-        //do work
-            dbRef = firebase.database().ref();
+  //do work
+    dbRef = firebase.database().ref();
 
-            const save = () =>{
-              app.newScore = {};
-              // will need to create the input/form dynamically
-              // saves name and value in to score
-              app.newScore.name = document.getElementById("name").value;
-              app.newScore.score = app.level;
-              dbRef.push(app.newScore);
-              console.log(app.newScore);
-            }
-            dbRef.on('value', score => {
+      dbRef.on('value', score => {
+        // sets firebase value in to new array 
+        const scores = Object.values(score.val()).map(function(ranks){
+          return ranks;
+        })
+        // sorts the array of objects by the score parameter from Highest to Lowest
+        const sorted = scores.sort((a,b) => b.score - a.score);
+        // console.table(sorted)
+        // make empty array to push listed items in by order
+        listArr = []
+        // for every item in the array sorted, push a new <li> with the sorted item
+          for(item in sorted){
+            listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
+          }
+        // slice the new array and only include the top 5 scores
+        let listArrTopFive = listArr.slice(0,5).join('');
+        // console.table(listArrTopFive);
 
-              // sets firebase value in to new array 
-              const scores = Object.values(score.val()).map(function(ranks){
-                return ranks;
-              })
-              // console.table(scores);
+        document.getElementById("scoreList").innerHTML = listArrTopFive;
+      });
 
-              // sorts the array of objects by the score parameter from Highest to Lowest
-              const sorted = scores.sort((a,b) => b.score - a.score);
-              // console.table(sorted)
-              // make empty array to push listed items in by order
-              listArr = []
-              // for every item in the array sorted, push a new <li> with the sorted item
-              for(item in sorted){
-                listArr.push(`<li>${sorted[item].name} - ${sorted[item].score}</li>`)              
-              }
-              // console.table(listArr);
-              // slice the new array and only include the top 5 scores
-              let listArrTopFive = listArr.slice(0,5).join('');
-              // console.table(listArrTopFive);
-
-              document.getElementById("scoreList").innerHTML = listArrTopFive;
-            });
   </script>
 </body>
 </html>
+

@@ -2,9 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50%;
   justify-content: space-between;
-
+  
   input#powerButton{
   position: relative;
   -webkit-appearance: none;
@@ -37,18 +36,21 @@
     }
   
     .startButton{
-      button{
-      display: flex;
-      justify-content: center;
-      margin:5% 0;
       width: 100%;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 15px;
+      margin: 10px 0;
+      button{
+        display: flex;
+        justify-content: center;
+        margin:5% 0;
+        width: 100%;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 15px;
       }
-  }
+    }
   .gameStatus{
     text-align: left;
   }
 }
+
 
