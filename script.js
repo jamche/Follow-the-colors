@@ -216,7 +216,7 @@ app.init = () => {
       if(!app.winner){
         setTimeout(() => {
           app.colorsToDefault();    
-        }, 100);
+        }, 200);
       }
     }
   })
@@ -227,7 +227,7 @@ app.init = () => {
       if (!app.winner) {
         setTimeout(() => {
           app.colorsToDefault();
-        }, 100);
+        }, 200);
       }
     }
   })
@@ -239,7 +239,7 @@ app.init = () => {
       if (!app.winner) {
         setTimeout(() => {
           app.colorsToDefault();
-        }, 100);
+        }, 200);
       }
     }
   })
@@ -250,7 +250,7 @@ app.init = () => {
       if (!app.winner) {
         setTimeout(() => {
           app.colorsToDefault();
-        }, 100);
+        }, 200);
       }
     }
   })
@@ -261,7 +261,7 @@ app.init = () => {
     if (!app.winner) {
       setTimeout(() => {
         app.clearGame();
-      }, 400);
+      }, 200);
     }
   }
 
