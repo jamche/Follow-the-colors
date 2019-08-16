@@ -179,7 +179,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden;
 }
 
-html {
+body {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#dbdac8), color-stop(#a0cbab), color-stop(#28bbba), color-stop(#00a3e0), to(#127aeb));
   background-image: linear-gradient(to right bottom, #dbdac8, #a0cbab, #28bbba, #00a3e0, #127aeb);
   min-height: 100vh;

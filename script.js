@@ -46,16 +46,20 @@ app.init = () => {
   app.yellowButton = document.querySelector("#yellow");
   //Default text when off 
   app.gameOnOrOff.innerHTML = `<h3>Game is off, turn the game on to start.</h3>`
+
+
   // function to create form 
   const f = document.createElement("form");
   f.setAttribute("action", "submit")
   f.setAttribute("id", "form")
 
+  // input to submit name
   const textInput = document.createElement("input");
   textInput.type = "text"
   textInput.id = "name"
   textInput.placeholder = "Enter Name";
 
+  // button to submit name in case enter doesn't work
   const btn = document.createElement("input")
   btn.type = "Submit"
   // btn.value = "Save"
@@ -63,6 +67,7 @@ app.init = () => {
   // btn.innerHTML = "Submit"
   btn.onclick = function saveScoreOrNot() {
 
+    // form validation
   const name = document.getElementById("name").value;
   // form requires text input
     if (name.trim() === "" || name === null) {
@@ -82,6 +87,7 @@ app.init = () => {
     }
   }
 
+    // creates form
   function createForm() {
     document.querySelector(".formInfo").appendChild(f);
     document.getElementById("form").addEventListener("submit", function (e) {
@@ -93,8 +99,7 @@ app.init = () => {
     document.querySelector(".btn").tabIndex = 0;
   }
 
-
-
+// turns on games, if game not on, buttons cannot be used
   app.powerOn.addEventListener('click', (e) => {
     if (app.powerOn.checked === true) {
       // console.log('game is on')
@@ -114,7 +119,7 @@ app.init = () => {
       app.startGame.style = 'display:initial';
     }
   }); 
-
+  // starts game and restarts game, sets everything back to initial state
   app.start = () => {
     app.winner = false;
     app.colorSequence = [];
@@ -129,17 +134,17 @@ app.init = () => {
     app.feedback.style = "display:initial";
     app.levelCount.style = "display:initial";
     
-    // levels of the game
-    for (let i = 0; i < 3; i++) {
+    // levels of the game, increase
+    for (let i = 0; i < 50; i++) {
       // 4 colors, so multiply by 4 and add 1 to get whole number between 1 - 5, math.floor rounds down the decimal, so number will be between 1 - 4(color options)
       app.colorSequence.push(Math.floor(Math.random() * 4) + 1);
     }
-    
+    // shows the color sequence
     app.showSequence = true;
-    console.log(app.colorSequence);
+    // console.log(app.colorSequence);
     app.colorInterval = setInterval(app.turn, 800);
   }
-
+  // click on the power
   app.startGame.addEventListener('click', (e) =>{
     if (app.powerOn.checked === false) {
       app.powerOnGame = false;
@@ -267,7 +272,7 @@ app.init = () => {
       app.correctPick = false;
     }
     // at game end
-    if (app.chosenSequence.length === 3 && app.correctPick) {
+    if (app.chosenSequence.length === 50 && app.correctPick) {
       app.youWin();
       document.getElementById("start").onclick = function () {
         this.disabled = false;
